@@ -101,7 +101,10 @@ homo_lumo has homo + lumo properties + everything else without relevant names fo
 # conn.close()
 
 
-#reading
+"""
+An example query in python which merges data and homo_lumo table on primary key gdbID
+This gets us the Smiles string, the homo, and the lumo in one dataframe
+"""
 conn = sqlite3.connect('MergedDB.db')
 c = conn.cursor()
 
