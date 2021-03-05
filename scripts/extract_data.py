@@ -100,16 +100,17 @@ homo_lumo has homo + lumo properties + everything else without relevant names fo
 
 # conn.close()
 
-
 """
 An example query in python which merges data and homo_lumo table on primary key gdbID
 This gets us the Smiles string, the homo, and the lumo in one dataframe
+DataFrame is then pushed to merged_data.csv for storage
 """
 conn = sqlite3.connect('MergedDB.db')
 c = conn.cursor()
 
 query = "SELECT gdbID, Smiles, homo, lumo FROM data, homo_lumo WHERE data.gdbID = homo_lumo.`index` ORDER BY gdbID"
 df = pd.read_sql_query(query, conn)
-print(df)
+df.to_csv ('./merged_data.csv', index = False, header=True)
+
 
 conn.close()
